@@ -8,6 +8,7 @@ const initialValue = {
   birthday: "",
   country: "",
   opinion: "",
+  documents: [],
   condition: {
     condition1: false,
     condition2: false
@@ -17,9 +18,10 @@ const initialValue = {
 function useForm() {
 
     const [formData, setFormData] = useState({...initialValue})
+    const {documents} = formData
+
 
   const inputHandler = (e) => {
-    console.log(e.target.value);
     setFormData({
       ...formData,
      [e.target.name]: e.target.value
@@ -41,10 +43,24 @@ function useForm() {
     console.log(formData);
   };
 
+  const documentHandler = e => {
+
+    if(e.target.checked){
+      setFormData({
+        documents: [...formData.documents, e.target.value]
+      })
+    }else{
+      const document = documents.filter(item => item !== e.target.value)
+      console.log(document)
+      setFormData({document})
+    }
+  }
+
     return{
         formData,
         inputHandler,
         checkBoxHandler,
+        documentHandler,
         submitHandler
     }
 }

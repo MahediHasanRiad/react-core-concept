@@ -3,9 +3,16 @@ import cls from "./form.module.css";
 import useForm from "./hook/useForm";
 import InputRadio from "./component/input-radio";
 import Input from "./component/input";
+import CheckBox from "./component/checkbox";
 
 function Form() {
-  const { formData, inputHandler, checkBoxHandler, submitHandler } = useForm();
+  const {
+    formData,
+    inputHandler,
+    checkBoxHandler,
+    documentHandler,
+    submitHandler,
+  } = useForm();
 
   return (
     <>
@@ -76,6 +83,7 @@ function Form() {
         </select>
         <br />
         <textarea
+          className="form-control"
           name="opinion"
           id=""
           placeholder="Tell me about your opinion..."
@@ -85,6 +93,16 @@ function Form() {
           onChange={inputHandler}
         />
         <br />
+        <span>Documents: </span> <br />
+        {/* name will be same */}
+        <CheckBox
+          labelText="ID Card"
+          id="idCard"
+          name="idCard"
+          value="idcard"
+          checked={formData.documents.includes("idcard")}
+          onChange={documentHandler}
+        />
         <span>Teams and Condition: </span>
         <br />
         <InputRadio
@@ -94,7 +112,8 @@ function Form() {
           name="condition1"
           value={formData.condition.condition1}
           onChange={checkBoxHandler}
-        /> <br />
+        />{" "}
+        <br />
         <InputRadio
           labelText="Condition-2"
           type="checkbox"
@@ -102,7 +121,8 @@ function Form() {
           name="condition2"
           value={formData.condition.condition2}
           onChange={checkBoxHandler}
-        /> <br />
+        />{" "}
+        <br />
         <button className="btn" onClick={submitHandler}>
           Submit
         </button>
