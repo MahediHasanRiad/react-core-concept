@@ -1,29 +1,25 @@
 import { useState } from "react";
 import Navbar from "./component/nav";
 import TableView from "./component/table-view";
+import ListView from "./component/list-view";
 
 
 function ToDo() {
- 
-  const [todo, setToDo] = useState()
-
-  const getData = data => {
-    setToDo(data)
-  }
   
-  const toggleSelect = e => {
+  
+  const toggleSelect = id => {
 
   }
 
-  const toggleComplete = e => {
+  const toggleComplete = id => {
 
   }
 
   return (
    <div>
-    <Navbar getData={getData}/> <br />
-    <TableView todo={todo} toggleSelect={()=>toggleSelect(todo.id)} toggleComplete={()=>toggleComplete(todo.id)}/> <br />
-
+    <Navbar/> <br />
+    <TableView todos={todos} toggleSelect={()=>toggleSelect(todos.id)} toggleComplete={()=>toggleComplete(todos.id)}/> <br />
+    <ListView todos={todos} toggleSelect={()=> toggleSelect(todos.id)} toggleComplete={() => toggleComplete(todos.id)} />
    </div>
   );
 }

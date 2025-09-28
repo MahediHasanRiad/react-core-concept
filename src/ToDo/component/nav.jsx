@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import shortid from "shortid";
 
 const initialValue = {
   id: '',
@@ -12,17 +13,21 @@ const initialValue = {
 function Navbar({ getData }) {
 
   const [data, setData] = useState({...initialValue})
-
+  const {id, date, text, description, isSelect, isComplete} = data
   const inputToDoHandler = (e) => {
     setData({
-      [e.target.name]: e.target.value
+      [data.text]: e.target.value
     })
   };
 
-  const addItem = () => {
+  const addItem = e => {
     setData({
       ...data,
-      
+      id: shortid.generate(),
+      date: new Date().toDateString(),
+      text: e.target.value,
+      description: e.target.value,
+      isComplete: false
     })
     getData(data)
 
@@ -37,7 +42,7 @@ function Navbar({ getData }) {
           type="text"
           id="inputTodo"
           name="inputTodo"
-          value=""
+          value={data.text}
           onChange={inputToDoHandler}
         />
         <button className="btn btn-success" onClick={addItem}>ADD</button>
