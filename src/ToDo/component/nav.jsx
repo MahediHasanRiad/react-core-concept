@@ -1,55 +1,21 @@
 import React, { useState } from "react";
 import shortid from "shortid";
+import Create from "./navbar/create";
+import FilterBtn from "./navbar/filter-btn";
 
-const initialValue = {
-  id: '',
-  date: '',
-  text: '',
-  description: '',
-  isSelect: [],
-  isComplete: false
-}
 
-function Navbar({ getData }) {
-
-  const [data, setData] = useState({...initialValue})
-  const {id, date, text, description, isSelect, isComplete} = data
-  const inputToDoHandler = (e) => {
-    setData({
-      [data.text]: e.target.value
-    })
-  };
-
-  const addItem = e => {
-    setData({
-      ...data,
-      id: shortid.generate(),
-      date: new Date().toDateString(),
-      text: e.target.value,
-      description: e.target.value,
-      isComplete: false
-    })
-    getData(data)
-
-  }
+function Navbar({getData}) {
 
   return (
     <div className="container">
       <h1 className="text-center">Stack ToDo</h1>
-      <section className="input-group">
-        <input
-          className="form-control"
-          type="text"
-          id="inputTodo"
-          name="inputTodo"
-          value={data.text}
-          onChange={inputToDoHandler}
-        />
-        <button className="btn btn-success" onClick={addItem}>ADD</button>
-      </section>
+
+      <Create getData={getData}/>
+
+
       <section className="d-flex justify-content-between align-items-center mt-2">
         <div className="btn-group">
-          <button className="btn btn-info">All</button>
+          <button className="btn btn-info" onClick={filterHandler}>All</button>
           <button className="btn btn-info">Running</button>
           <button className="btn btn-info">Complete</button>
         </div>
