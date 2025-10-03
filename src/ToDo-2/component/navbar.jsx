@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import shortid from "shortid";
 
 const Navbar = ({ getData, allData }) => {
+  const [allToDo, setAllToDo] = useState([])
   const [todo, setTodo] = useState("");
   const [search, setSearch] = useState('')
 
@@ -9,13 +10,13 @@ const Navbar = ({ getData, allData }) => {
     setTodo(e.target.value);
   };
 
-  const addItem = (e) => {
+  const addItem = e => {
     const newData = {
       id: shortid.generate(),
       text: todo,
       isComplete: false,
     };
-    // setTodo(newData);
+    setAllToDo([...allToDo, newData]);
     getData(newData)
     setTodo("");
   };
@@ -28,16 +29,34 @@ const Navbar = ({ getData, allData }) => {
 
   const searchHandler = (e) => {
     const searchValue = e.target.value
+    setSearch(e.target.value)
 
-    if(e.target.value !== ''){
-      const searchData = allData.filter(item => item.text.toLowerCase().includes(searchValue.toLowerCase()))
-      setSearch(searchData)
-      getData(searchData)
-    }else{
-      getData(allData)
+    if(searchValue === ''){
+      getData(allToDo)
     }
-    
+
+    if(searchValue !== ''){
+      const result = allToDo.filter(todo => todo.text.includes(searchValue))
+      getData(result)
+    }
   };
+
+  const filterItem = value => {
+
+    let filterData;
+
+    if(value === 'all'){
+      filterData = allToDo
+    }
+    else if(value === 'completed'){
+      filterData = allData.filter(data => data.isComplete === true)
+    }
+    else if(value === 'incomplete'){
+      filterData = allData.filter(data => data.isComplete === false)
+    }
+console.log(filterData)
+    getData(filterData)
+  }
 
   return (
     <section className="container mx-auto">
@@ -66,7 +85,7 @@ const Navbar = ({ getData, allData }) => {
           />
         </div>
         <div>
-          <select className="form-select" name="filter" id="filter">
+          <select className="form-select" name="filter" id="filter" onChange={(e)=> filterItem(e.target.value)}>
             <option value="all">ALL</option>
             <option value="completed">Completed</option>
             <option value="incomplete">Incomplete</option>
