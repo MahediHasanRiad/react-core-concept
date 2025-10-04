@@ -94,7 +94,6 @@ function ToDo() {
   };
 
   // search value in display
-
   let displayData = search === "" ? todos : todos.filter((todo) =>
           todo.text.toLowerCase().includes(search.toLowerCase())
         );
@@ -121,7 +120,7 @@ function ToDo() {
     else if(filter === 'completed') return todo.isComplete
     else return !todo.isComplete
   })
-console.log(todos)
+
   return (
     <>
       <h1 className="display-3 text-center">ToDo</h1>
