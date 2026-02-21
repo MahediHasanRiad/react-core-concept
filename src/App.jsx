@@ -1,4 +1,5 @@
 import Form from "./form/form"
+import PasswordGenerator from "./Password-Generator"
 import Poll from "./Poll/app"
 import Timer from "./timer/timer"
 import ToDo from "./ToDo/app"
@@ -11,7 +12,8 @@ function App() {
      {/* <Timer/> */}
      {/* <Form/> */}
      {/* <ToDo/> */}
-     <Poll/>
+     {/* <Poll/> */}
+     <PasswordGenerator />
     </>
   )
 }
