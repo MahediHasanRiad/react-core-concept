@@ -1,3 +1,4 @@
+import FormHandleWithContext from "./Context-API"
 import Counter from "./counter"
 import Form from "./form/form"
 import PasswordGenerator from "./Password-Generator"
@@ -15,7 +16,8 @@ function App() {
      {/* <ToDo/> */}
      {/* <Poll/> */}
      {/* <PasswordGenerator /> */}
-     <Counter />
+     {/* <Counter /> */}
+     <FormHandleWithContext />
     </>
   )
 }
