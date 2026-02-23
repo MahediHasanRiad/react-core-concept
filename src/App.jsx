@@ -1,4 +1,5 @@
 import FormHandleWithContext from "./Context-API"
+import DarkModeTheme from "./Context-API-2"
 import Counter from "./counter"
 import Form from "./form/form"
 import PasswordGenerator from "./Password-Generator"
@@ -17,7 +18,8 @@ function App() {
      {/* <Poll/> */}
      {/* <PasswordGenerator /> */}
      {/* <Counter /> */}
-     <FormHandleWithContext />
+     {/* <FormHandleWithContext /> */}
+     <DarkModeTheme />
     </>
   )
 }
