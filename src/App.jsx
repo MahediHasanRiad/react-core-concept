@@ -5,8 +5,11 @@ import Counter from "./counter";
 import Form from "./form/form";
 import PasswordGenerator from "./Password-Generator";
 import Poll from "./Poll/app";
+import TodoWithRedux from "./Redux-1";
 import Timer from "./timer/timer";
 import ToDo from "./ToDo/app";
+
+
 
 function App() {
   return (
@@ -19,7 +22,8 @@ function App() {
       {/* <Counter /> */}
       {/* <FormHandleWithContext /> */}
       {/* <DarkModeTheme /> */}
-      <ToDosWithContextAPI />
+      {/* <ToDosWithContextAPI /> */}
+      <TodoWithRedux />
     </>
   );
 }
