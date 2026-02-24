@@ -6,7 +6,7 @@ import { TodoContextProvider } from "./context/todo_context";
 function ToDosWithContextAPI() {
 
   const [todos, setTodos] = useState([])
-console.log(todos)
+
   const addTodo = (todo) => {
     setTodos((prev) => [{...todo}, ...prev])
   }
